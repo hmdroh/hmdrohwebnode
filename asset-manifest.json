@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/static/css/main.e337fac9.chunk.css",
+    "main.js": "/static/js/main.891449f0.chunk.js",
+    "main.js.map": "/static/js/main.891449f0.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.f3b168eb.js",
+    "runtime-main.js.map": "/static/js/runtime-main.f3b168eb.js.map",
+    "static/js/2.2aa2977b.chunk.js": "/static/js/2.2aa2977b.chunk.js",
+    "static/js/2.2aa2977b.chunk.js.map": "/static/js/2.2aa2977b.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.2d365b67644f61af3f00fc7e210bd73a.js": "/precache-manifest.2d365b67644f61af3f00fc7e210bd73a.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.e337fac9.chunk.css.map": "/static/css/main.e337fac9.chunk.css.map",
+    "static/js/2.2aa2977b.chunk.js.LICENSE.txt": "/static/js/2.2aa2977b.chunk.js.LICENSE.txt",
+    "static/media/puzzle.css": "/static/media/exampleimg.0f039a9a.jpg",
+    "static/media/hmd.svg": "/static/media/hmd.e1d40030.svg",
+    "static/media/line.svg": "/static/media/line.b65c0a0c.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f3b168eb.js",
+    "static/js/2.2aa2977b.chunk.js",
+    "static/css/main.e337fac9.chunk.css",
+    "static/js/main.891449f0.chunk.js"
+  ]
+}
