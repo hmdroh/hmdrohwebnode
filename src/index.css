@@ -1,0 +1,87 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+@import url("https://fonts.googleapis.com/css?family=Raleway:400,400i,700");
+.buttonCV {
+  @import url("https://fonts.googleapis.com/css?family=Raleway:400,400i,700");
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin: 15px; 
+
+}
+ a .buttonCV{
+  text-decoration: none;
+  color: black;
+}
+ a .buttonCV:hover{
+  text-decoration: none;
+  color: white;
+}
+.buttonCV .buttonCV {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.buttonCV .buttonCV svg {
+  height: 35px;
+  width: 100px;
+  fill: none;
+  stroke-width: 5;
+}
+.buttonCV .buttonCV svg .o1 {
+  stroke: rgba(65, 147, 255, 0.7);
+  fill: #373963;
+  transition: all 1s ease-in-out;
+}
+.buttonCV .buttonCV svg .o2 {
+  stroke: white;
+  stroke-dasharray: 20 420;
+  stroke-dashoffset: 20;
+  transition: all 1s ease-in-out;
+}
+.buttonCV .buttonCV span {
+  position: absolute;
+  margin: auto 0;
+}
+.buttonCV .buttonCV:hover .o1 {
+  fill: rgba(64, 106, 184, 0.3);
+}
+.buttonCV .buttonCV:hover .o2 {
+  stroke-dashoffset: -420;
+}
+.buttonCV svg {
+  height: 35px;
+  width: 100px;
+  fill: none;
+  stroke-width: 5;
+}
+.buttonCV svg .o1 {
+  stroke: rgba(4, 30, 68, 0.7);
+  fill: rgb(80, 147, 249);
+  transition: all 1s ease-in-out;
+}
+.buttonCV svg .o2 {
+  stroke: white;
+  stroke-dasharray: 20 420;
+  stroke-dashoffset: 20;
+  transition: all 1s ease-in-out;
+}
+.buttonCV span {
+  position: absolute;
+  margin: auto 0;
+  font-size: 0.7em;
+
+}
+.buttonCV:hover .o1 {
+  fill: rgba(68, 66, 233, 0.762);
+}
+.buttonCV:hover .o2 {
+  stroke-dashoffset: -420;
+}
+

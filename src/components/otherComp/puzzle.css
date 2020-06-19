@@ -1,0 +1,127 @@
+
+
+.PuzzleRealMain{
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    align-content: center;
+    align-self: center;
+    justify-content: center;
+    justify-self: center;
+    margin-top: -6em;
+    transform: scale(0.8);
+ }
+ .PuzzleRealMain button{
+     height: 2em;
+     font-size: 1em;
+     background-color: navy;
+     cursor: pointer;
+     color: white;
+ }
+ .PuzzleRealMain button:hover{
+    height: 2em;
+    background-color: gold;
+    cursor: pointer;
+    color: navy;
+}
+.PuzzleContainer{
+   display: grid;
+   grid-template-columns: 90px 90px 90px;
+   grid-template-rows: 90px 90px 90px;
+   list-style: none;
+   grid-gap: 1px 1px;
+   width: 270px;
+}
+
+.PuzzleContainer li {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    color: white;
+    font-size: 2em;
+    width: 90px;
+    height: 90px;
+    /* border: gray 2px solid; */
+    cursor: pointer;
+}
+.PuzzleContainer li:hover
+{
+    width: 88px;
+    height: 88px;
+     border: white 2px solid; 
+
+}
+.PuzzleMainContainer{
+    display: flex;
+    background-color: black;
+}
+
+
+
+.Puzzle1{
+    
+    background: url("./exampleimg.jpg");
+    background-repeat:no-repeat;
+    background-position:0px 0px;
+
+}
+.Puzzle2{
+   
+    background: url("./exampleimg.jpg");
+    background-repeat:no-repeat;
+    background-position:-90px 0px;
+}
+.Puzzle3{
+  
+    background: url("./exampleimg.jpg");
+    background-repeat:no-repeat;
+    background-position: -180px 0px;
+}
+.Puzzle4{
+   
+    background: url("./exampleimg.jpg");
+    background-repeat:no-repeat;
+    background-position:0px -90px;
+}
+.Puzzle5{
+  
+    background: url("./exampleimg.jpg");
+    background-repeat:no-repeat;
+    background-position:-90px -90px;
+}
+.Puzzle6{
+   
+    background: url("./exampleimg.jpg");
+    background-repeat:no-repeat;
+    background-position: -180px -90px;
+}
+.Puzzle7{
+   
+    background: url("./exampleimg.jpg");
+    background-repeat:no-repeat;
+    background-position:0px -180px;
+}
+.Puzzle8{
+   
+    background: url("./exampleimg.jpg");
+    background-repeat:no-repeat;
+    background-position:-90px -180px;
+}
+
+.puzzleText{
+    color:gray;
+    font-size: 0.9em;
+    font-style: italic;
+    text-align: center;
+
+}
+
+@media only screen and (max-width: 650px) {
+    .PuzzleRealMain {
+        margin-top: -4em;
+        transform: scale(1);
+
+    }
+}
