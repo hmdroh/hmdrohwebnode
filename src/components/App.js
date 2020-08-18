@@ -42,7 +42,7 @@ class Application1 extends Component {
                         <div className="Occupation-title"><MyName duration="0.9">Full Stack Software Engineer</MyName></div>
                         <div class="lnk-div"><a href="https://linkedin.com/in/hmdroh" target="_blank"><MyName duration="1">Linkedin</MyName></a></div>
                         <div class="lnk-div"><a href="https://github.com/hmdroh" target="_blank"><MyName duration="1.2">Github Link</MyName></a></div>
-                        <div>	<a href="./Hamed-Resume-20-02.pdf" target="_blank"><div class="buttonCV">
+                        <div>	<a href="./Hamed-Resume-20-07.pdf" target="_blank"><div class="buttonCV">
                         <span>Updated Resume</span>
 		<svg>
 		<polyline class="o1" points="0 0, 100 0, 100 35, 0 35, 0 0"></polyline>
