@@ -11,7 +11,7 @@
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
     "three": "^0.117.1",
-    "gsap": "^2.0.1",
+    "gsap": "^3.6.0",
     "jquery": "^3.4.1",
     "moment": "^2.24.0",
     "moment-timezone": "^0.5.26",
