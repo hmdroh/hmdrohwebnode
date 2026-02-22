@@ -7,7 +7,7 @@ import { TimeClock } from "../../../shared/components/TimeClock";
 import { externalLinks } from "../data/homeData";
 
 export function HeroSection() {
-  const resumeHref = `${process.env.PUBLIC_URL || ""}/Hamed-Resume-20-07.pdf`;
+  const resumeHref = `${process.env.PUBLIC_URL || ""}/Hamed_Rohani_Resume-2026-02.pdf`;
 
   return (
     <div className="div-pg1">
