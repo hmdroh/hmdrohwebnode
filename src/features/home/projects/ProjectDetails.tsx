@@ -1,7 +1,8 @@
 import React from "react";
-import PropTypes from "prop-types";
 
-function DefaultProjectDetails({ project }) {
+import type { Project } from "../components/ProjectCard";
+
+function DefaultProjectDetails({ project }: Readonly<{ project: Project }>) {
   return (
     <div>
       {project.archived ? (
@@ -61,16 +62,12 @@ function DefaultProjectDetails({ project }) {
   );
 }
 
-DefaultProjectDetails.propTypes = {
-  project: PropTypes.object.isRequired
-};
-
 function WeekendWondererDetails() {
   return (
     <div>
       <div style={{ opacity: 0.9, marginBottom: 10 }}>
-        Weekend Wonderer helps users discover weekend activities based on interests,
-        location, and quick filters.
+        Weekend Wonderer helps users discover weekend activities based on interests, location,
+        and quick filters.
       </div>
       <h3 style={{ marginBottom: 8 }}>What I built</h3>
       <ul style={{ marginTop: 0 }}>
@@ -86,8 +83,8 @@ function AllPresaleDetails() {
   return (
     <div>
       <div style={{ opacity: 0.9, marginBottom: 10 }}>
-        AllPresale was a crypto information website built to surface coin prices in USD,
-        show charts (CoinMarketCap-style), and support wallet connect to view holdings.
+        AllPresale was a crypto information website built to surface coin prices in USD, show
+        charts (CoinMarketCap-style), and support wallet connect to view holdings.
       </div>
       <h3 style={{ marginBottom: 8 }}>Key features</h3>
       <ul style={{ marginTop: 0 }}>
@@ -107,9 +104,8 @@ function AfghanSchool7Details() {
   return (
     <div>
       <div style={{ opacity: 0.9, marginBottom: 10 }}>
-        Afghan School 7 is a mobile learning app built with Expo React Native and the
-        iClasser Learning API, covering grade 7 subjects with right-to-left language
-        support.
+        Afghan School 7 is a mobile learning app built with Expo React Native and the iClasser
+        Learning API, covering grade 7 subjects with right-to-left language support.
       </div>
       <h3 style={{ marginBottom: 8 }}>What it includes</h3>
       <ul style={{ marginTop: 0 }}>
@@ -128,8 +124,8 @@ function AnatomyViewerDetails() {
   return (
     <div>
       <div style={{ opacity: 0.9, marginBottom: 10 }}>
-        Anatomy Image Viewer was a desktop application built in 2004 with Visual Basic 6
-        to help medical students in Afghanistan browse and study anatomy images offline.
+        Anatomy Image Viewer was a desktop application built in 2004 with Visual Basic 6 to
+        help medical students in Afghanistan browse and study anatomy images offline.
       </div>
       <h3 style={{ marginBottom: 8 }}>What it did</h3>
       <ul style={{ marginTop: 0 }}>
@@ -144,7 +140,7 @@ function AnatomyViewerDetails() {
   );
 }
 
-export function ProjectDetails({ project }) {
+export function ProjectDetails({ project }: Readonly<{ project?: Project | null }>) {
   if (!project) return null;
 
   if (project.id === "afghan-school-7") return <AfghanSchool7Details />;
@@ -153,8 +149,4 @@ export function ProjectDetails({ project }) {
   if (project.id === "allpresale") return <AllPresaleDetails />;
   return <DefaultProjectDetails project={project} />;
 }
-
-ProjectDetails.propTypes = {
-  project: PropTypes.object
-};
 

@@ -6,7 +6,18 @@ import { BlogCard } from "../components/BlogCard";
 
 import "../styles/blog.css";
 
-function getTopicIcon(topic) {
+type BlogPostMeta = {
+  slug: string;
+  title: string;
+  date?: string;
+  dateLabel?: string;
+  readTime?: string;
+  topic?: string;
+  summary: string;
+  imagePath?: string;
+};
+
+function getTopicIcon(topic?: string): React.ReactNode {
   switch ((topic || "").toLowerCase()) {
     case "frontend":
       return <Layers size={18} />;
@@ -27,7 +38,9 @@ function getTopicIcon(topic) {
 
 export function BlogIndexPage() {
   const sorted = React.useMemo(() => {
-    return [...posts].sort((a, b) => (b.date || "").localeCompare(a.date || ""));
+    return (posts as BlogPostMeta[])
+      .slice()
+      .sort((a, b) => (b.date || "").localeCompare(a.date || ""));
   }, []);
 
   const count = sorted.length;
@@ -55,7 +68,7 @@ export function BlogIndexPage() {
               to={`/blog/${post.slug}`}
               title={post.title}
               description={post.summary}
-              date={post.dateLabel || post.date}
+              date={post.dateLabel || post.date || ""}
               readTime={post.readTime || "—"}
               icon={getTopicIcon(post.topic)}
               imageSrc={

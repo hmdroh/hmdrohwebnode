@@ -1,10 +1,16 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import PropTypes from "prop-types";
 import { gsap } from "gsap";
 
-export function SectionBlock({ title, iconClassName, actions, children }) {
-  const rootRef = useRef(null);
-  const titleRef = useRef(null);
+export type SectionBlockProps = Readonly<{
+  title: string;
+  iconClassName?: string;
+  actions?: React.ReactNode;
+  children: React.ReactNode;
+}>;
+
+export function SectionBlock({ title, iconClassName, actions, children }: SectionBlockProps) {
+  const rootRef = useRef<HTMLDivElement | null>(null);
+  const titleRef = useRef<HTMLSpanElement | null>(null);
   const resetInProgressRef = useRef(false);
 
   const [isEditing, setIsEditing] = useState(false);
@@ -39,10 +45,11 @@ export function SectionBlock({ title, iconClassName, actions, children }) {
   useEffect(() => {
     if (!isEditing) return;
 
-    const onPointerDown = (e) => {
-      if (!rootRef.current) return;
-      if (!rootRef.current.contains(e.target)) {
-        titleRef.current?.blur?.();
+    const onPointerDown = (e: PointerEvent) => {
+      const root = rootRef.current;
+      if (!root) return;
+      if (!root.contains(e.target as Node)) {
+        titleRef.current?.blur();
       }
     };
 
@@ -52,16 +59,19 @@ export function SectionBlock({ title, iconClassName, actions, children }) {
 
   return (
     <div ref={rootRef} className="new-section-div">
-      <div className="floating-section-div"></div>
+      <div className="floating-section-div" />
       <div className="section-content-div">
         <div className="section-title">
           <div className="sectionTitleLeft">
-            {iconClassName ? <i className={iconClassName}></i> : null}{" "}
+            {iconClassName ? <i className={iconClassName} /> : null}{" "}
             <span
               ref={titleRef}
               contentEditable
               suppressContentEditableWarning
               aria-label="Section title"
+              role="textbox"
+              aria-multiline="false"
+              tabIndex={0}
               spellCheck={false}
               onFocus={() => setIsEditing(true)}
               onKeyDown={(e) => {
@@ -95,11 +105,4 @@ export function SectionBlock({ title, iconClassName, actions, children }) {
     </div>
   );
 }
-
-SectionBlock.propTypes = {
-  title: PropTypes.string.isRequired,
-  iconClassName: PropTypes.string,
-  actions: PropTypes.node,
-  children: PropTypes.node.isRequired
-};
 

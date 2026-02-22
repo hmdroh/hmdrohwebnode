@@ -4,23 +4,36 @@ import { Link, useParams } from "react-router-dom";
 
 import { getPostBySlug } from "../data/posts";
 
+type BlogPostMeta = {
+  slug: string;
+  title: string;
+  date?: string;
+  dateLabel?: string;
+  readTime?: string;
+  markdownPath: string;
+  imagePath?: string;
+};
+
+type Status = "idle" | "loading" | "loaded" | "error";
+
 export function BlogPostPage() {
-  const { slug } = useParams();
-  const post = getPostBySlug(slug);
+  const { slug } = useParams<{ slug: string }>();
+  const post = (slug ? (getPostBySlug(slug) as BlogPostMeta | undefined) : undefined) || undefined;
 
   const [markdown, setMarkdown] = React.useState("");
-  const [status, setStatus] = React.useState("idle"); // idle | loading | loaded | error
+  const [status, setStatus] = React.useState<Status>("idle");
   const [errorMessage, setErrorMessage] = React.useState("");
 
   React.useEffect(() => {
     if (!post) return;
     let cancelled = false;
+    const currentPost = post;
 
     async function load() {
       setStatus("loading");
       setErrorMessage("");
       try {
-        const url = `${process.env.PUBLIC_URL || ""}${post.markdownPath}`;
+        const url = `${process.env.PUBLIC_URL || ""}${currentPost.markdownPath}`;
         const res = await fetch(url);
         if (!res.ok) throw new Error(`Failed to load markdown: ${res.status}`);
         const text = await res.text();
@@ -28,7 +41,7 @@ export function BlogPostPage() {
           setMarkdown(text);
           setStatus("loaded");
         }
-      } catch (e) {
+      } catch (e: unknown) {
         if (!cancelled) {
           setErrorMessage(e instanceof Error ? e.message : "Unknown error");
           setStatus("error");
@@ -51,9 +64,7 @@ export function BlogPostPage() {
     );
   }
 
-  const coverSrc = post.imagePath
-    ? `${process.env.PUBLIC_URL || ""}${post.imagePath}`
-    : "";
+  const coverSrc = post.imagePath ? `${process.env.PUBLIC_URL || ""}${post.imagePath}` : "";
 
   return (
     <div style={{ maxWidth: 1100, margin: "0 auto", padding: "24px 16px" }}>
@@ -89,8 +100,8 @@ export function BlogPostPage() {
       {status === "loading" ? <div style={{ opacity: 0.8 }}>Loading…</div> : null}
       {status === "error" ? (
         <div style={{ opacity: 0.8 }}>
-          Couldn’t load this post ({errorMessage}). Check that the markdown file
-          exists at <code>{post.markdownPath}</code>.
+          Couldn’t load this post ({errorMessage}). Check that the markdown file exists at{" "}
+          <code>{post.markdownPath}</code>.
         </div>
       ) : null}
       {status === "loaded" ? (

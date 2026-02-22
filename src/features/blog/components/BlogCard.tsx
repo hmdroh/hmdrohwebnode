@@ -1,8 +1,17 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-export function BlogCard({ to, title, description, date, readTime, icon, imageSrc }) {
+export type BlogCardProps = Readonly<{
+  to: string;
+  title: string;
+  description: string;
+  date: string;
+  readTime: string;
+  icon?: React.ReactNode;
+  imageSrc?: string;
+}>;
+
+export function BlogCard({ to, title, description, date, readTime, icon, imageSrc }: BlogCardProps) {
   return (
     <article className="blogCard">
       <Link to={to} className="blogCardLink" aria-label={title}>
@@ -25,14 +34,4 @@ export function BlogCard({ to, title, description, date, readTime, icon, imageSr
     </article>
   );
 }
-
-BlogCard.propTypes = {
-  to: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
-  readTime: PropTypes.string.isRequired,
-  icon: PropTypes.node,
-  imageSrc: PropTypes.string
-};
 

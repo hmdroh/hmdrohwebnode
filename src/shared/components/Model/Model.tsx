@@ -1,10 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import PropTypes from "prop-types";
 
 import "./model.css";
 
-export function Model({ open, title, children, onClose }) {
+export type ModelProps = Readonly<{
+  open: boolean;
+  title: string;
+  children: React.ReactNode;
+  onClose: () => void;
+}>;
+
+export function Model({ open, title, children, onClose }: ModelProps) {
   React.useEffect(() => {
     if (!open) return;
 
@@ -14,7 +20,7 @@ export function Model({ open, title, children, onClose }) {
     return () => {
       document.body.style.overflow = previousOverflow;
     };
-  }, [open, onClose]);
+  }, [open]);
 
   if (!open) return null;
 
@@ -47,11 +53,4 @@ export function Model({ open, title, children, onClose }) {
     document.body
   );
 }
-
-Model.propTypes = {
-  open: PropTypes.bool.isRequired,
-  title: PropTypes.string.isRequired,
-  children: PropTypes.node.isRequired,
-  onClose: PropTypes.func.isRequired
-};
 

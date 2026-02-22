@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { gsap } from "gsap";
 
 const VARIANTS = {
@@ -27,7 +26,22 @@ const VARIANTS = {
     hidden: { opacity: 0, x: 20 },
     visible: { opacity: 1, x: 0 }
   }
-};
+} as const;
+
+export type AppearVariant = keyof typeof VARIANTS;
+
+export type AppearProps = Readonly<{
+  children: React.ReactNode;
+  className?: string;
+  variant?: AppearVariant;
+  delay?: number;
+  duration?: number;
+  viewportOptions?: {
+    once?: boolean;
+    margin?: string;
+    threshold?: number;
+  };
+}>;
 
 export function Appear({
   children,
@@ -36,8 +50,8 @@ export function Appear({
   delay = 0,
   duration = 0.5,
   viewportOptions = { once: true, margin: "0px", threshold: 0.1 }
-}) {
-  const ref = React.useRef(null);
+}: AppearProps) {
+  const ref = React.useRef<HTMLDivElement | null>(null);
   const hasAnimatedRef = React.useRef(false);
 
   const once = viewportOptions?.once ?? true;
@@ -51,13 +65,13 @@ export function Appear({
     const chosen = VARIANTS[variant] || VARIANTS.appear;
     if (once && hasAnimatedRef.current) return;
 
-    gsap.set(el, { ...chosen.hidden, willChange: "transform,opacity" });
+    gsap.set(el, { ...(chosen.hidden as object), willChange: "transform,opacity" });
 
     const animateIn = () => {
       if (once && hasAnimatedRef.current) return;
       hasAnimatedRef.current = true;
       gsap.to(el, {
-        ...chosen.visible,
+        ...(chosen.visible as object),
         duration: variant === "scaleIn" ? 0.4 : duration,
         delay,
         ease: "power3.out",
@@ -80,7 +94,7 @@ export function Appear({
             if (once) observer.disconnect();
           } else if (!once) {
             hasAnimatedRef.current = false;
-            gsap.set(el, { ...chosen.hidden });
+            gsap.set(el, { ...(chosen.hidden as object) });
           }
         }
       },
@@ -89,14 +103,7 @@ export function Appear({
 
     observer.observe(el);
     return () => observer.disconnect();
-  }, [
-    variant,
-    delay,
-    duration,
-    once,
-    margin,
-    threshold
-  ]);
+  }, [variant, delay, duration, once, margin, threshold]);
 
   return (
     <div ref={ref} className={className}>
@@ -104,24 +111,4 @@ export function Appear({
     </div>
   );
 }
-
-Appear.propTypes = {
-  children: PropTypes.node.isRequired,
-  className: PropTypes.string,
-  variant: PropTypes.oneOf([
-    "appear",
-    "fadeUp",
-    "fadeIn",
-    "scaleIn",
-    "slideLeft",
-    "slideRight"
-  ]),
-  delay: PropTypes.number,
-  duration: PropTypes.number,
-  viewportOptions: PropTypes.shape({
-    once: PropTypes.bool,
-    margin: PropTypes.string,
-    threshold: PropTypes.number
-  })
-};
 

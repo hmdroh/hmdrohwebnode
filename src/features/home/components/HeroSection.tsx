@@ -45,18 +45,17 @@ export function HeroSection() {
         </div>
 
         <div>
-          <a  style={{ display: 'inline-block', margin: 'auto'}} href={resumeHref} target="_blank" rel="noopener noreferrer">
+          <a
+            style={{ display: "inline-block", margin: "auto" }}
+            href={resumeHref}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <div className="buttonCV">
               <span>Updated Resume</span>
               <svg>
-                <polyline
-                  className="o1"
-                  points="0 0, 100 0, 100 35, 0 35, 0 0"
-                ></polyline>
-                <polyline
-                  className="o2"
-                  points="0 0, 100 0, 100 35, 0 35, 0 0"
-                ></polyline>
+                <polyline className="o1" points="0 0, 100 0, 100 35, 0 35, 0 0" />
+                <polyline className="o2" points="0 0, 100 0, 100 35, 0 35, 0 0" />
               </svg>
             </div>
           </a>

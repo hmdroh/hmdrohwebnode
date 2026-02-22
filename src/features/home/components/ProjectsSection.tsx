@@ -3,15 +3,19 @@ import { LayoutGrid, List } from "lucide-react";
 
 import { projects } from "../data/homeData";
 import { SectionBlock } from "./SectionBlock";
-import { ProjectCard } from "./ProjectCard";
+import { ProjectCard, Project } from "./ProjectCard";
 import { Model } from "../../../shared/components/Model/Model";
 import { ProjectDetails } from "../projects/ProjectDetails";
 
+type View = "grid" | "list";
+
 export function ProjectsSection() {
-  const [selectedProjectId, setSelectedProjectId] = React.useState(null);
-  const [view, setView] = React.useState("grid"); // grid | list
-  const selectedProject =
-    selectedProjectId ? projects.find((p) => p.id === selectedProjectId) : null;
+  const [selectedProjectId, setSelectedProjectId] = React.useState<string | null>(null);
+  const [view, setView] = React.useState<View>("grid");
+
+  const selectedProject: Project | null = selectedProjectId
+    ? ((projects as Project[]).find((p) => p.id === selectedProjectId) ?? null)
+    : null;
 
   return (
     <SectionBlock
@@ -41,28 +45,19 @@ export function ProjectsSection() {
       }
     >
       <div className={`projectGrid ${view === "list" ? "projectGridList" : ""}`}>
-        {projects.map((project) => (
-          <ProjectCard
-            key={project.id}
-            project={project}
-            onOpenDetails={() => setSelectedProjectId(project.id)}
-          />
+        {(projects as Project[]).map((project) => (
+          <ProjectCard key={project.id} project={project} onOpenDetails={() => setSelectedProjectId(project.id)} />
         ))}
       </div>
 
-      <Model
-        open={Boolean(selectedProject)}
-        title={selectedProject?.title || ""}
-        onClose={() => setSelectedProjectId(null)}
-      >
+      <Model open={Boolean(selectedProject)} title={selectedProject?.title || ""} onClose={() => setSelectedProjectId(null)}>
         {selectedProject ? (
           <div>
             <ProjectDetails project={selectedProject} />
             <div style={{ display: "flex", gap: 10, marginTop: 16, flexWrap: "wrap" }}>
               {selectedProject.externalUrl &&
               selectedProject.archived !== true &&
-              (selectedProject.live === true ||
-                selectedProject.forceDetailsOpen === true) ? (
+              (selectedProject.live === true || selectedProject.forceDetailsOpen === true) ? (
                 <a
                   href={selectedProject.externalUrl}
                   target="_blank"

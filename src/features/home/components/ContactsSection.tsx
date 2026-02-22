@@ -8,20 +8,20 @@ export function ContactsSection() {
     <SectionBlock title="Contacts" iconClassName="far fa-address-card">
       <div className="contact-link">
         <a href={externalLinks.linkedin} target="_blank" rel="noopener noreferrer">
-          <i className="fab fa-linkedin"></i> {externalLinks.linkedin}
+          <i className="fab fa-linkedin" /> {externalLinks.linkedin}
         </a>
       </div>
       <br />
       <div className="contact-link">
         <a href={externalLinks.github} target="_blank" rel="noopener noreferrer">
-          <i className="fab fa-github"></i> {externalLinks.github}
+          <i className="fab fa-github" /> {externalLinks.github}
         </a>
       </div>
       <br />
       <br />
       <div className="contact-link-container">
-      <div className="contact-link">Built with React.js, TypeScript, Tailwind CSS, GSAP</div>
-      <div className="contact-link">California, 2026</div>
+        <div className="contact-link">Built with React.js, TypeScript, Tailwind CSS, GSAP</div>
+        <div className="contact-link">California, 2026</div>
       </div>
     </SectionBlock>
   );

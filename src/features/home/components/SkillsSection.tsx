@@ -7,14 +7,15 @@ import { SectionBlock } from "./SectionBlock";
 import { Model } from "../../../shared/components/Model/Model";
 
 export function SkillsSection() {
-  const [selectedSkill, setSelectedSkill] = React.useState(null);
+  const [selectedSkill, setSelectedSkill] = React.useState<string | null>(null);
 
+  const descriptions = skillDescriptions as Record<string, string>;
   const description =
-    selectedSkill && (skillDescriptions[selectedSkill] || `About ${selectedSkill}.`);
+    selectedSkill && (descriptions[selectedSkill] || `About ${selectedSkill}.`);
 
   return (
     <SectionBlock title="Technical Skills" iconClassName="fas fa-graduation-cap">
-      {skills.map((skill) => (
+      {skills.map((skill: string) => (
         <MyName key={skill} duration="0.84">
           <button
             type="button"
@@ -32,11 +33,7 @@ export function SkillsSection() {
         </MyName>
       ))}
 
-      <Model
-        open={Boolean(selectedSkill)}
-        title={selectedSkill || ""}
-        onClose={() => setSelectedSkill(null)}
-      >
+      <Model open={Boolean(selectedSkill)} title={selectedSkill || ""} onClose={() => setSelectedSkill(null)}>
         <h3 style={{ marginTop: 0 }}>Summary</h3>
         <div>{description}</div>
       </Model>
