@@ -1,0 +1,73 @@
+.ModelRoot {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+}
+
+.ModelBackdrop {
+  position: absolute;
+  inset: 0;
+  border: none;
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+}
+
+.ModelDialog {
+  position: relative;
+  z-index: 1;
+  width: min(720px, 100%);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(10, 10, 12, 0.92);
+  color: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 12px 60px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+  padding: 0;
+}
+
+.ModelHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.ModelTitle {
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+}
+
+.ModelClose {
+  height: 32px;
+  width: 32px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(0, 0, 0, 0.45);
+  color: rgba(255, 255, 255, 0.96);
+  cursor: pointer;
+  font-size: 20px;
+  line-height: 0;
+}
+
+.ModelClose:hover {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.ModelBody {
+  padding: 16px;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.ModelBody h3 {
+  margin: 0 0 8px 0;
+  color: rgba(255, 255, 255, 0.92);
+}
+

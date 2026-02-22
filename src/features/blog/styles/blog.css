@@ -1,0 +1,152 @@
+.blogPage {
+  background: #ffffff;
+  color: #000000;
+  min-height: calc(100vh - 1px);
+}
+
+.blogHero {
+  border-bottom: 1px solid #000000;
+}
+
+.blogHeroInner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 28px 16px;
+}
+
+.blogHeroTitleRow {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.blogHeroTitle {
+  font-size: 40px;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.blogHeroCount {
+  font-size: 14px;
+  opacity: 0.75;
+}
+
+.blogHeroSubtitle {
+  margin: 10px 0 0 0;
+  font-size: 18px;
+  opacity: 0.92;
+}
+
+.blogMain {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 34px 16px 56px 16px;
+}
+
+.blogGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+@media (min-width: 780px) {
+  .blogGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+}
+
+@media (min-width: 1100px) {
+  .blogGrid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.blogCard {
+  border: 1px solid #000000;
+  background: #ffffff;
+  transition: background-color 250ms ease, color 250ms ease, transform 120ms ease;
+}
+
+.blogCard:hover {
+  background: #000000;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.blogCardLink {
+  display: block;
+  padding: 18px;
+  text-decoration: none;
+  color: inherit;
+  height: 100%;
+}
+
+.blogCardMedia {
+  height: 140px;
+  overflow: hidden;
+  border: 1px solid currentColor;
+  margin: -18px -18px 14px -18px;
+}
+
+.blogCardImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.blogCardLink:focus-visible {
+  outline: 3px solid rgba(0, 0, 0, 0.55);
+  outline-offset: 2px;
+}
+
+.blogCard:hover .blogCardLink:focus-visible {
+  outline: 3px solid rgba(255, 255, 255, 0.75);
+}
+
+.blogCardMetaRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.blogCardIcon {
+  width: 26px;
+  height: 26px;
+  border: 1px solid currentColor;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+}
+
+.blogCardMetaText {
+  font-size: 13px;
+  opacity: 0.85;
+}
+
+.blogCardMetaDot {
+  font-size: 13px;
+  opacity: 0.7;
+}
+
+.blogCardTitle {
+  font-size: 22px;
+  line-height: 1.2;
+  margin: 0 0 12px 0;
+  font-weight: 800;
+}
+
+.blogCard:hover .blogCardTitle {
+  text-decoration: underline;
+}
+
+.blogCardDesc {
+  margin: 0;
+  line-height: 1.6;
+  opacity: 0.95;
+}
+

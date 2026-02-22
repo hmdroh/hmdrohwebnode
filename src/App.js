@@ -1,16 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
+import { RouterProvider } from "react-router-dom";
 
-import Application from "./components/App";
+import { router } from "./app/router";
 
-class App extends Component {
-  render() {
-    return (
-      <div>
-
-      <Application />
-      </div>
-    );
-  }
+export default function App() {
+  return <RouterProvider router={router} />;
 }
-
-export default App;
